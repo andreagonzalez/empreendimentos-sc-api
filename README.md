@@ -234,6 +234,12 @@ O servidor será iniciado em:
 http://localhost:3000
 ```
 
+Criar arquivo .env baseado no .env.example
+
+````
+cp .env.example .env
+```
+
 ---
 
 # 🧪 Testes da API
