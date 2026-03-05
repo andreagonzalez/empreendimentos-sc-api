@@ -9,4 +9,8 @@ router.get("/empreendimentos/:id", controller.getById);
 
 router.post("/empreendimentos", controller.create);
 
+router.put("/empreendimentos/:id", controller.update);
+
+router.delete("/empreendimentos/:id", controller.remove);
+
 module.exports = router;

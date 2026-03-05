@@ -40,9 +40,9 @@ exports.create = (req, res) => {
   } = req.body;
 
   const sql = `
-  INSERT INTO empreendimentos
-  (nomeEmpreendimento, nomeEmpreendedor, municipio, segmento, contatoEmail, status)
-  VALUES (?, ?, ?, ?, ?, ?)
+    INSERT INTO empreendimentos
+    (nomeEmpreendimento, nomeEmpreendedor, municipio, segmento, contatoEmail, status)
+    VALUES (?, ?, ?, ?, ?, ?)
   `;
 
   db.run(
@@ -59,4 +59,71 @@ exports.create = (req, res) => {
       });
     }
   );
+};
+
+// ATUALIZAR EMPREENDIMENTO
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  const {
+    nomeEmpreendimento,
+    nomeEmpreendedor,
+    municipio,
+    segmento,
+    contatoEmail,
+    status
+  } = req.body;
+
+  const sql = `
+    UPDATE empreendimentos
+    SET 
+      nomeEmpreendimento = ?,
+      nomeEmpreendedor = ?,
+      municipio = ?,
+      segmento = ?,
+      contatoEmail = ?,
+      status = ?
+    WHERE id = ?
+  `;
+
+  db.run(
+    sql,
+    [
+      nomeEmpreendimento,
+      nomeEmpreendedor,
+      municipio,
+      segmento,
+      contatoEmail,
+      status,
+      id
+    ],
+    function (err) {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+
+      res.json({
+        message: "Empreendimento atualizado",
+        changes: this.changes
+      });
+    }
+  );
+};
+
+// DELETAR EMPREENDIMENTO
+exports.remove = (req, res) => {
+  const id = req.params.id;
+
+  const sql = "DELETE FROM empreendimentos WHERE id = ?";
+
+  db.run(sql, [id], function (err) {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    res.json({
+      message: "Empreendimento removido",
+      changes: this.changes
+    });
+  });
 };
