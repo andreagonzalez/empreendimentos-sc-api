@@ -1,3 +1,4 @@
+const { swaggerUi, swaggerSpec } = require("./docs/swagger");
 const express = require("express");
 const app = express();
 
@@ -10,6 +11,8 @@ app.use(express.json());
 app.use("/", empreendimentosRoutes);
 
 const PORT = 3000;
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
