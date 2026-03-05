@@ -246,6 +246,15 @@ As requisições da API podem ser testadas utilizando ferramentas como:
 * cURL
 
 ---
+## Documentação da API
+
+A API possui documentação interativa utilizando Swagger.
+
+Acesse:
+
+http://localhost:3000/api-docs
+
+---
 
 # 🎥 Vídeo Pitch
 
@@ -268,7 +277,6 @@ No vídeo são apresentados:
 
 Algumas melhorias que podem ser implementadas futuramente:
 
-* Documentação automática da API com **Swagger**
 * Validação avançada de dados com **Joi ou Zod**
 * Paginação na listagem de empreendimentos
 * Autenticação com **JWT**
