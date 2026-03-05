@@ -1,18 +1,29 @@
 # API de Gerenciamento de Empreendimentos em Santa Catarina
 
-## 📌 Descrição da Solução
+![Node.js](https://img.shields.io/badge/Node.js-18+-green)
+![Express](https://img.shields.io/badge/Express.js-5.x-blue)
+![SQLite](https://img.shields.io/badge/Database-SQLite-lightgrey)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
-Esta aplicação consiste em uma **API RESTful** desenvolvida em **Node.js com Express**, que permite o gerenciamento de informações sobre empreendimentos localizados no estado de Santa Catarina.
+---
+
+# 📌 Descrição da Solução
+
+Esta aplicação consiste em uma **API RESTful** desenvolvida em **Node.js com Express**, que permite o gerenciamento de informações sobre empreendimentos localizados no estado de **Santa Catarina**.
 
 A aplicação implementa um **CRUD completo (Create, Read, Update, Delete)** para cadastro, consulta, atualização e remoção de empreendimentos.
 
 Os dados são persistidos em um banco de dados **SQLite**, permitindo uma solução simples, leve e facilmente executável em ambiente local.
 
-A API foi organizada seguindo boas práticas de desenvolvimento, com separação de responsabilidades entre **rotas, controllers e banco de dados**.
+A API foi organizada seguindo boas práticas de desenvolvimento, com separação de responsabilidades entre:
+
+* **Rotas**
+* **Controllers**
+* **Banco de dados**
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+# 🚀 Tecnologias Utilizadas
 
 * Node.js
 * Express.js
@@ -23,7 +34,7 @@ A API foi organizada seguindo boas práticas de desenvolvimento, com separação
 
 ---
 
-## 📂 Estrutura do Projeto
+# 📂 Estrutura do Projeto
 
 ```
 empreendimentos-sc-api
@@ -48,7 +59,7 @@ empreendimentos-sc-api
 
 ---
 
-## 📊 Estrutura dos Dados
+# 📊 Estrutura dos Dados
 
 Cada empreendimento possui os seguintes campos:
 
@@ -58,19 +69,24 @@ Cada empreendimento possui os seguintes campos:
 * **municipio**
 * **segmento**
 
-  * Tecnologia
-  * Comércio
-  * Indústria
-  * Serviços
-  * Agronegócio
+Segmentos possíveis:
+
+* Tecnologia
+* Comércio
+* Indústria
+* Serviços
+* Agronegócio
+
+Outros campos:
+
 * **contatoEmail**
 * **status** (ativo ou inativo)
 
 ---
 
-## 🔗 Endpoints da API
+# 🔗 Endpoints da API
 
-### Criar empreendimento
+## Criar empreendimento
 
 ```
 POST /empreendimentos
@@ -91,7 +107,7 @@ Exemplo de body:
 
 ---
 
-### Listar todos os empreendimentos
+## Listar todos os empreendimentos
 
 ```
 GET /empreendimentos
@@ -99,7 +115,7 @@ GET /empreendimentos
 
 ---
 
-### Buscar empreendimento por ID
+## Buscar empreendimento por ID
 
 ```
 GET /empreendimentos/:id
@@ -107,7 +123,7 @@ GET /empreendimentos/:id
 
 ---
 
-### Atualizar empreendimento
+## Atualizar empreendimento
 
 ```
 PUT /empreendimentos/:id
@@ -115,7 +131,7 @@ PUT /empreendimentos/:id
 
 ---
 
-### Remover empreendimento
+## Remover empreendimento
 
 ```
 DELETE /empreendimentos/:id
@@ -123,27 +139,90 @@ DELETE /empreendimentos/:id
 
 ---
 
-## ⚙️ Como Executar o Projeto
+# 📋 Tabela de Rotas da API
 
-### 1️⃣ Clonar o repositório
+| Método | Rota                   | Descrição                          |
+| ------ | ---------------------- | ---------------------------------- |
+| GET    | `/empreendimentos`     | Lista todos os empreendimentos     |
+| GET    | `/empreendimentos/:id` | Busca um empreendimento específico |
+| POST   | `/empreendimentos`     | Cria um novo empreendimento        |
+| PUT    | `/empreendimentos/:id` | Atualiza um empreendimento         |
+| DELETE | `/empreendimentos/:id` | Remove um empreendimento           |
+
+---
+
+# 📦 Exemplo de Resposta da API
+
+## GET /empreendimentos
+
+Resposta:
+
+```json
+[
+  {
+    "id": 1,
+    "nomeEmpreendimento": "Tech Floripa",
+    "nomeEmpreendedor": "Ana Silva",
+    "municipio": "Florianópolis",
+    "segmento": "Tecnologia",
+    "contatoEmail": "contato@techfloripa.com",
+    "status": "ativo"
+  }
+]
+```
+
+---
+
+# ⚠️ Validação Básica
+
+A API possui uma validação simples para garantir que os campos obrigatórios sejam enviados.
+
+Campos obrigatórios:
+
+* nomeEmpreendimento
+* nomeEmpreendedor
+* municipio
+* segmento
+* contatoEmail
+* status
+
+Caso algum campo esteja ausente, a API retorna:
+
+```json
+{
+  "error": "Campos obrigatórios não preenchidos"
+}
+```
+
+---
+
+# ⚙️ Como Executar o Projeto
+
+## 1️⃣ Clonar o repositório
 
 ```
 git clone https://github.com/SEU-USUARIO/empreendimentos-sc-api.git
 ```
 
-### 2️⃣ Entrar na pasta do projeto
+---
+
+## 2️⃣ Entrar na pasta do projeto
 
 ```
 cd empreendimentos-sc-api
 ```
 
-### 3️⃣ Instalar as dependências
+---
+
+## 3️⃣ Instalar as dependências
 
 ```
 npm install
 ```
 
-### 4️⃣ Executar o servidor
+---
+
+## 4️⃣ Executar o servidor
 
 ```
 npm run dev
@@ -157,7 +236,7 @@ http://localhost:3000
 
 ---
 
-## 🧪 Testes da API
+# 🧪 Testes da API
 
 As requisições da API podem ser testadas utilizando ferramentas como:
 
@@ -168,7 +247,7 @@ As requisições da API podem ser testadas utilizando ferramentas como:
 
 ---
 
-## 🎥 Vídeo Pitch
+# 🎥 Vídeo Pitch
 
 Link para o vídeo de apresentação do projeto:
 
@@ -185,8 +264,25 @@ No vídeo são apresentados:
 
 ---
 
-## 📄 Considerações Finais
+# 🔮 Melhorias Futuras
 
-Esta aplicação foi desenvolvida como parte de um desafio técnico com o objetivo de demonstrar conhecimentos em desenvolvimento backend utilizando Node.js, criação de APIs REST e manipulação de banco de dados SQLite.
+Algumas melhorias que podem ser implementadas futuramente:
 
-O projeto prioriza simplicidade, organização do código e facilidade de execução.
+* Documentação automática da API com **Swagger**
+* Validação avançada de dados com **Joi ou Zod**
+* Paginação na listagem de empreendimentos
+* Autenticação com **JWT**
+* Deploy em ambiente cloud
+
+---
+
+# 📄 Considerações Finais
+
+Esta aplicação foi desenvolvida como parte de um desafio técnico com o objetivo de demonstrar conhecimentos em **desenvolvimento backend com Node.js**, criação de **APIs REST** e manipulação de banco de dados **SQLite**.
+
+O projeto prioriza:
+
+* simplicidade
+* organização do código
+* facilidade de execução
+* boas práticas de estruturação de APIs
