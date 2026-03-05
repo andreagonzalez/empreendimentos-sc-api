@@ -19,19 +19,19 @@ exports.getById = (req, res) => {
 
     const sql = "SELECT * FROM empreendimentos WHERE id = ?";
 
-db.get(sql, [id], (err, row) => {
-  if (err) {
-    return res.status(500).json({ error: err.message });
-  }
+    db.get(sql, [id], (err, row) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
 
-  if (!row) {
-    return res.status(404).json({
-      message: "Empreendimento não encontrado"
+        if (!row) {
+            return res.status(404).json({
+                message: "Empreendimento não encontrado"
+            });
+        }
+
+        res.json(row);
     });
-  }
-
-  res.json(row);
-});
 };
 
 // CRIAR
