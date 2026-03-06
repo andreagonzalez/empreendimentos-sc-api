@@ -267,7 +267,7 @@ http://localhost:3000/api-docs
 Link para o vídeo de apresentação do projeto:
 
 ```
-INSERIR LINK DO VÍDEO AQUI
+https://youtu.be/nokmKAbgpAA
 ```
 
 No vídeo são apresentados:
