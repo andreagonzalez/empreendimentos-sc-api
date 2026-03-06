@@ -88,16 +88,16 @@ exports.update = (req, res) => {
     } = req.body;
 
     const sql = `
-    UPDATE empreendimentos
-    SET 
-      nomeEmpreendimento = ?,
-      nomeEmpreendedor = ?,
-      municipio = ?,
-      segmento = ?,
-      contatoEmail = ?,
-      status = ?
-    WHERE id = ?
-  `;
+        UPDATE empreendimentos
+        SET 
+          nomeEmpreendimento = ?,
+          nomeEmpreendedor = ?,
+          municipio = ?,
+          segmento = ?,
+          contatoEmail = ?,
+          status = ?
+        WHERE id = ?
+    `;
 
     db.run(
         sql,
@@ -111,12 +111,20 @@ exports.update = (req, res) => {
             id
         ],
         function (err) {
+
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
 
+            // 👇 VERIFICA SE EXISTE REGISTRO
+            if (this.changes === 0) {
+                return res.status(404).json({
+                    message: "Empreendimento não encontrado"
+                });
+            }
+
             res.json({
-                message: "Empreendimento atualizado",
+                message: "Empreendimento atualizado com sucesso",
                 changes: this.changes
             });
         }
